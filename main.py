@@ -44,7 +44,7 @@ btn4 = KeyboardButton('About us👥')
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
 
-    btn = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2) .add(btn3, btn4).add(KeyboardButton("Channel🔙"))
+    btn = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2) .add(btn3, btn4).add(KeyboardButton("School fee"))
     print(message)
 
     await message.answer(f"Hi! {message.from_user.first_name}\nI'm Victory Wisdom bot!\nPowered by @mikigode", reply_markup=btn)
@@ -94,7 +94,7 @@ async def call(call: types.CallbackQuery):
 async def call(call: types.CallbackQuery):
     await call.message.delete()
     if call.data == 'IELTS':
-        await call.message.answer('coming soon 😊\n just join the channel and Groups until we post video tutorials')
+        await call.message.answer('IELTS \n \nHere are links for preparation for IELTS examination.\nIELTS reading-QUICK STUDY\n👉 /get_book_17\nIELTS reading- target\n👉 /get_book_18\nIELTS speaking question\n👉 /get_book_19\nIELTS speaking Topics\n👉 /get_book_20\nIELTS speaking Module\n👉 /get_book_21')
     else:
         await call.answer()
 
