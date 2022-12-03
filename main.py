@@ -1,9 +1,30 @@
 import logging
-
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from dotenv import load_dotenv
 import os
+import pyrebase
+
+firebaseConfig = {"apiKey": "AIzaSyB3wPtzFhFr0mGn5acHeZvQN6TqSXAdPlo",
+
+                  "authDomain": "firrst--project-with-firebase.firebaseapp.com",
+
+                  "databaseURL": "https://firrst--project-with-firebase-default-rtdb.firebaseio.com",
+
+                  "projectId": "firrst--project-with-firebase",
+
+                  "storageBucket": "firrst--project-with-firebase.appspot.com",
+
+                  "messagingSenderId": "1063364478119",
+
+                  "appId": "1:1063364478119:web:d7fdcb005de23a48e98782",
+
+                  "measurementId": "G-99DXRSNJJP"
+                  }
+
+firebase = pyrebase.initialize_app(firebaseConfig)
+
+db = firebase.database()
 
 load_dotenv()
 
@@ -43,11 +64,21 @@ btn4 = KeyboardButton('About us👥')
 #Bot initialiser
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
-
-    btn = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2) .add(btn3, btn4).add(KeyboardButton("School fee"))
     print(message)
+    if message.chat.type == "private":
+        data = {
+            message.chat.id: {
+                "first_name": message.chat.first_name,
+                "last_name": message.chat.last_name,
+                "username": message.chat.username,
+            }
+        }
+        db.child('Users').update(data)
+        await bot.send_message(group_id, f"User {message.chat.mention} clicked /start")
 
-    await message.answer(f"Hi! {message.from_user.first_name}\nI'm Victory Wisdom bot!\nPowered by @mikigode", reply_markup=btn)
+        btn = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2) .add(btn3, btn4).add(KeyboardButton("School fee"))
+
+        await message.answer(f"Hi! {message.from_user.first_name}\nI'm Victory Wisdom bot!\ni'm here to provide our service", reply_markup=btn)
 
 
 @dp.message_handler()  # handling input messages form the reply keyboard buttons
