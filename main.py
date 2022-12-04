@@ -86,7 +86,7 @@ async def first_answer(message: types.Message):
     if message.text == 'Books📚':
         await message.answer('Textbook written source of information, designed specifically for the use of students, on a particular subject or field of study that is usually developed based on a syllabus and geared towards meeting specific quality and learning requirements.\n \nReferences is an option where you can get books that will boost your grades including precious guides and some important books.', reply_markup=key2)
     elif message.text == "Tutorial📹":
-        await message.answer('select your Book', reply_markup=key3)
+        await message.answer('TUTORIALS with live tutors are useful for both advanced students and struggling ones.', reply_markup=key3)
     elif message.text == "IELTS":
         await message.answer('IELTS is an English language test for study, migration or work. Over three million people take our test every year. IELTS is accepted by more than 11,000 employers, universities, schools and immigration bodies around the world.', reply_markup=key4)
     elif message.text == "About us👥":
