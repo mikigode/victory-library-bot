@@ -90,7 +90,7 @@ async def first_answer(message: types.Message):
     elif message.text == "IELTS":
         await message.answer('IELTS is an English language test for study, migration or work. Over three million people take our test every year. IELTS is accepted by more than 11,000 employers, universities, schools and immigration bodies around the world.', reply_markup=key4)
     elif message.text == "About us👥":
-        await message.answer('coming soon 😊', reply_markup=key2)
+        await message.answer('VICTORY WISDOM SCHOOL \n \n We are working for more than 10 years teaching English with American & British Accent \n    💼ceo & Founder \n   👨‍🏫[SEYFEDIN TAHIR](https://t.me/victorywisdombot)\n    💼Director\n   👨‍🏫[JEMAL KEDIR](https://t.me/Kedir_ka_jemummela)\n    💼Bot Developer\n   👨‍💻[MIKIGODE](https://t.me/mikigode)\n\nThis bot available in cloud 2023', parse_mode="MARKDOWN")
     elif message.text.startswith('/get_book'):
         ids = message.text.split("_")[2]
         print(ids)
