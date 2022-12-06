@@ -61,7 +61,7 @@ btn2 = KeyboardButton('Tutorial📹')
 btn3 = KeyboardButton('IELTS')
 btn4 = KeyboardButton('About us👥')
 
-#Bot initialiser
+#Bot initialiser with Database
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
     print(message)
@@ -83,13 +83,50 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler()  # handling input messages form the reply keyboard buttons
 async def first_answer(message: types.Message):
+    print(message)
     if message.text == 'Books📚':
+        data = {
+            message.chat.id: {
+                "first_name": message.chat.first_name,
+                "last_name": message.chat.last_name,
+                "username": message.chat.username,
+            }
+        }
+        db.child('Users').update(data)
+        await bot.send_message(group_id, f"User {message.chat.mention} \n clicked #Books button")
         await message.answer('Textbook written source of information, designed specifically for the use of students, on a particular subject or field of study that is usually developed based on a syllabus and geared towards meeting specific quality and learning requirements.\n \nReferences is an option where you can get books that will boost your grades including precious guides and some important books.', reply_markup=key2)
     elif message.text == "Tutorial📹":
+        data = {
+            message.chat.id: {
+                "first_name": message.chat.first_name,
+                "last_name": message.chat.last_name,
+                "username": message.chat.username,
+            }
+        }
+        db.child('Users').update(data)
+        await bot.send_message(group_id, f"User {message.chat.mention} \n clicked #tutorial button")
         await message.answer('TUTORIALS with live tutors are useful for both advanced students and struggling ones.', reply_markup=key3)
     elif message.text == "IELTS":
+        data = {
+            message.chat.id: {
+                "first_name": message.chat.first_name,
+                "last_name": message.chat.last_name,
+                "username": message.chat.username,
+            }
+        }
+        db.child('Users').update(data)
+        await bot.send_message(group_id, f"User {message.chat.mention} \n clicked #IELTS button")
         await message.answer('IELTS is an English language test for study, migration or work. Over three million people take our test every year. IELTS is accepted by more than 11,000 employers, universities, schools and immigration bodies around the world.', reply_markup=key4)
     elif message.text == "About us👥":
+        data = {
+            message.chat.id: {
+                "first_name": message.chat.first_name,
+                "last_name": message.chat.last_name,
+                "username": message.chat.username,
+            }
+        }
+        db.child('Users').update(data)
+        await bot.send_message(group_id, f"User {message.chat.mention} \n clicked #About button")
         await message.answer('VICTORY WISDOM SCHOOL \n \n We are working for more than 10 years teaching English with American & British Accent \n    💼ceo & Founder \n   👨‍🏫[SEYFEDIN TAHIR](https://t.me/victorywisdombot)\n    💼Director\n   👨‍🏫[JEMAL KEDIR](https://t.me/Kedir_ka_jemummela)\n    💼Bot Developer\n   👨‍💻[MIKIGODE](https://t.me/mikigode)\n\nThis bot available in cloud 2023', parse_mode="MARKDOWN")
     elif message.text.startswith('/get_book'):
         ids = message.text.split("_")[2]
