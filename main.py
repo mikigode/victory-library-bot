@@ -76,7 +76,7 @@ async def send_welcome(message: types.Message):
         db.child('Users').update(data)
         await bot.send_message(group_id, f"User {message.chat.mention} clicked /start")
 
-        btn = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2) .add(btn3, btn4).add(KeyboardButton("School fee"))
+        btn = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2) .add(btn3, btn4).add(KeyboardButton("📚 Study tips 📚"))
 
         await message.answer(f"Hi! {message.from_user.first_name}\nI'm Victory Wisdom bot!\ni'm here to provide our service", reply_markup=btn)
 
