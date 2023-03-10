@@ -5,21 +5,14 @@ from dotenv import load_dotenv
 import os
 import pyrebase
 
-firebaseConfig = {"apiKey": "AIzaSyB3wPtzFhFr0mGn5acHeZvQN6TqSXAdPlo",
-
-                  "authDomain": "firrst--project-with-firebase.firebaseapp.com",
-
-                  "databaseURL": "https://firrst--project-with-firebase-default-rtdb.firebaseio.com",
-
-                  "projectId": "firrst--project-with-firebase",
-
-                  "storageBucket": "firrst--project-with-firebase.appspot.com",
-
-                  "messagingSenderId": "1063364478119",
-
-                  "appId": "1:1063364478119:web:d7fdcb005de23a48e98782",
-
-                  "measurementId": "G-99DXRSNJJP"
+firebaseConfig = {apiKey: "AIzaSyB3wPtzFhFr0mGn5acHeZvQN6TqSXAdPlo",
+                  authDomain: "firrst--project-with-firebase.firebaseapp.com",
+                  databaseURL: "https://firrst--project-with-firebase-default-rtdb.firebaseio.com",
+                  projectId: "firrst--project-with-firebase",
+                  storageBucket: "firrst--project-with-firebase.appspot.com",
+                  messagingSenderId: "1063364478119",
+                  appId: "1:1063364478119:web:1598963f5d49a3ace98782",
+                  measurementId: "G-WD6T1ZSDQ4"
                   }
 
 firebase = pyrebase.initialize_app(firebaseConfig)
